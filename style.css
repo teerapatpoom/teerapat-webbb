@@ -1,0 +1,314 @@
+/* ==========================================================================
+   GRURU MUSEUM — DESIGN SYSTEM STYLESHEET
+   Theme: “New Knowledge. New Storytelling. Built for Everyday Living.”
+   Aesthetic: Future Archaeology (Modern Art Gallery × Sci-Fi Lab)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,600&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* 70% Base Colors */
+  --gr-void: #0B0B0F;
+  --gr-graphite: #17171F;
+  --gr-grid: #2C2C3A;
+  --gr-fog: #8A8A9E;
+  --gr-paper: #F2EDE3;
+
+  /* 10% Neon Accent Colors */
+  --gr-lime: #D7FF3A;      /* Signature Brand Color */
+  --gr-ember: #FF5A1F;     /* The Past & Era Badges */
+  --gr-violet: #8C6BFF;    /* Technology & Future */
+  --gr-cyan: #2EE6FF;      /* Data & Science */
+
+  /* 6 Category Colors */
+  --gr-cat-science: #2EE6FF;
+  --gr-cat-history: #FF5A1F;
+  --gr-cat-tech: #8C6BFF;
+  --gr-cat-culture: #FFC233;
+  --gr-cat-nature: #34E89E;
+  --gr-cat-art: #FF5FA2;
+
+  /* Typography */
+  --font-header: 'Chakra Petch', sans-serif;
+  --font-body: 'IBM Plex Sans Thai', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Motion */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-fast: 150ms var(--ease-expo);
+  --trans-mid: 300ms var(--ease-expo);
+  --trans-slow: 700ms var(--ease-expo);
+}
+
+/* Base Reset & Typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--gr-void);
+  color: var(--gr-paper);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--gr-void);
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--gr-lime);
+  color: #000000;
+}
+
+/* Specimen Grid 48px Background */
+.specimen-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(44, 44, 58, 0.38) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(44, 44, 58, 0.38) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Subtle Scanline Overlay */
+.scanline-overlay {
+  position: relative;
+}
+.scanline-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.15;
+  z-index: 2;
+}
+
+/* HUD 45-Degree Chamfered Card */
+.hud-card {
+  background: var(--gr-graphite);
+  border: 1px solid var(--gr-grid);
+  clip-path: polygon(0 14px, 14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+  transition: all var(--trans-mid);
+  position: relative;
+}
+
+.hud-card:hover {
+  border-color: rgba(215, 255, 58, 0.6);
+  box-shadow: 0 0 25px rgba(215, 255, 58, 0.12);
+}
+
+.hud-card-accent-lime {
+  border-left: 3px solid var(--gr-lime);
+}
+.hud-card-accent-ember {
+  border-left: 3px solid var(--gr-ember);
+}
+.hud-card-accent-cyan {
+  border-left: 3px solid var(--gr-cyan);
+}
+.hud-card-accent-violet {
+  border-left: 3px solid var(--gr-violet);
+}
+
+/* Buttons */
+.gr-btn-primary {
+  background-color: var(--gr-lime);
+  color: #000000;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--gr-lime);
+  box-shadow: 4px 4px 0 var(--gr-ember);
+  transition: all var(--trans-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.gr-btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--gr-ember);
+  background-color: #e5ff6e;
+}
+
+.gr-btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--gr-ember);
+}
+
+.gr-btn-secondary {
+  background-color: var(--gr-graphite);
+  color: var(--gr-paper);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border: 1px solid var(--gr-grid);
+  transition: all var(--trans-fast);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.gr-btn-secondary:hover {
+  border-color: var(--gr-lime);
+  color: var(--gr-lime);
+  box-shadow: 0 0 15px rgba(215, 255, 58, 0.15);
+}
+
+/* Specimen Label Badge */
+.specimen-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gr-fog);
+  border-left: 2px solid var(--gr-lime);
+  padding-left: 0.5rem;
+  display: inline-block;
+}
+
+/* Time Warp Gradient */
+.gradient-time-warp {
+  background: linear-gradient(135deg, var(--gr-ember), var(--gr-violet));
+}
+
+.text-gradient-time-warp {
+  background: linear-gradient(135deg, var(--gr-ember), var(--gr-violet));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Bar */
+.gr-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(23, 23, 31, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gr-grid);
+  padding: 0.85rem 1.5rem;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--gr-fog);
+  text-decoration: none;
+  transition: color var(--trans-fast);
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--gr-lime);
+  background: rgba(215, 255, 58, 0.08);
+}
+
+/* Category Badge Pills */
+.cat-pill {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.cat-pill-science { background: rgba(46, 230, 255, 0.15); color: var(--gr-cat-science); border: 1px solid rgba(46, 230, 255, 0.3); }
+.cat-pill-history { background: rgba(255, 90, 31, 0.15); color: var(--gr-cat-history); border: 1px solid rgba(255, 90, 31, 0.3); }
+.cat-pill-tech { background: rgba(140, 107, 255, 0.15); color: var(--gr-cat-tech); border: 1px solid rgba(140, 107, 255, 0.3); }
+.cat-pill-culture { background: rgba(255, 194, 51, 0.15); color: var(--gr-cat-culture); border: 1px solid rgba(255, 194, 51, 0.3); }
+.cat-pill-nature { background: rgba(52, 232, 158, 0.15); color: var(--gr-cat-nature); border: 1px solid rgba(52, 232, 158, 0.3); }
+.cat-pill-art { background: rgba(255, 95, 162, 0.15); color: var(--gr-cat-art); border: 1px solid rgba(255, 95, 162, 0.3); }
+
+/* Radar Ring Pulsing Animation */
+@keyframes radarSweep {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.radar-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--gr-lime);
+  animation: radarSweep 2.5s infinite ease-out;
+  pointer-events: none;
+}
+
+/* Glitch Heading Effect on Hover */
+.glitch-hover:hover {
+  text-shadow: 2px 0 var(--gr-cyan), -2px 0 var(--gr-ember);
+}
+
+/* Interactive Canvas Container */
+#networkCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+#networkCanvas:active {
+  cursor: grabbing;
+}
+
+/* Modals */
+.gr-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 11, 15, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.gr-modal-backdrop.active {
+  display: flex;
+}
+
+.gr-modal-window {
+  background: var(--gr-graphite);
+  border: 1px solid var(--gr-grid);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  clip-path: polygon(0 16px, 16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gr-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gr-grid);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gr-lime);
+}
